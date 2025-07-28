@@ -13,6 +13,19 @@ $font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "
 $container-max-width: 1200px;
 $header-height: 80px;
 
+// Reusable placeholder for tags
+%tag-base {
+  display: inline-block;
+  background-color: $light-gray;
+  color: $medium-gray;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: $secondary-color;
+    color: white;
+  }
+}
+
 // Base styles
 * {
   box-sizing: border-box;
@@ -113,85 +126,78 @@ body {
 // Blog posts
 .post-list {
   .post-item {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
     border-bottom: 2px solid $border-color;
     
     &:last-child {
       border-bottom: none;
     }
+  }
 
-    .post-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-      border-bottom: 1px dashed rgba($text-color, 0.2);
-    }
+  .post-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px dashed rgba($text-color, 0.2);
+  }
 
-    .post-item-title-tags {
-      flex: 1;
-    }
-    
-    .post-date {
-      color: $medium-gray;
-      font-size: 0.9rem;
-      text-align: right;
-      white-space: nowrap;
-      padding-top: 0.25rem; // Align with title
-    }
+  .post-item-title-tags {
+    flex: 1;
+  }
+  
+  .post-date {
+    color: $medium-gray;
+    font-size: 0.9rem;
+    text-align: right;
+    white-space: nowrap;
+    padding-top: 0.25rem; // Align with title
+  }
 
-    .post-tags {
-      margin-top: 0.5rem;
-      .tag {
-        display: inline-block;
-        background-color: $light-gray;
-        color: $medium-gray;
-        padding: 0.1rem 0.5rem;
-        border-radius: 12px;
-        font-size: 0.8rem;
-        text-decoration: none;
-        margin-right: 0.5rem;
-        margin-bottom: 0.25rem;
-        
-        &:hover {
-          background-color: $secondary-color;
-          color: white;
-        }
-      }
+  .post-tags {
+    margin-top: 0.5rem;
+    .tag {
+      @extend %tag-base;
+      padding: 0.1rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.25rem;
     }
+  }
+  
+  .post-title {
+    margin-bottom: 0.5rem;
     
-    .post-title {
-      margin-bottom: 1rem;
-      
-      a {
-        color: $primary-color;
-        text-decoration: none;
-        font-size: 1.5rem;
-        font-weight: 600;
-        
-        &:hover {
-          color: $secondary-color;
-        }
-      }
-    }
-    
-    .post-summary {
-      color: $medium-gray;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    
-    .read-more {
-      color: $secondary-color;
+    a {
+      color: $primary-color;
       text-decoration: none;
-      font-weight: 500;
+      font-size: 1.5rem;
+      font-weight: 600;
       
       &:hover {
-        text-decoration: underline;
+        color: $secondary-color;
       }
+    }
+  }
+  
+  .post-summary {
+    color: $medium-gray;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+  }
+  
+  .read-more {
+    color: $secondary-color;
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
@@ -284,21 +290,13 @@ body {
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid $border-color;
-    
+
     .tag {
-      display: inline-block;
-      background-color: $light-gray;
-      color: $medium-gray;
+      @extend %tag-base;
       padding: 0.4rem 0.8rem;
       border-radius: 15px;
-      text-decoration: none;
       margin-right: 0.5rem;
       margin-bottom: 0.5rem;
-      
-      &:hover {
-        background-color: $secondary-color;
-        color: white;
-      }
     }
   }
 }
@@ -346,50 +344,46 @@ body {
 .archives {
   .year-section {
     margin-bottom: 3rem;
+  }
+  
+  .year-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $primary-color;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid $border-color;
+    padding-bottom: 0.5rem;
+  }
+  
+  .month-section {
+    margin-bottom: 2rem;
+  }
+  
+  .month-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: $secondary-color;
+    margin-bottom: 1rem;
+  }
+  
+  .post-item-archive {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
     
-    .year-title {
-      font-size: 2rem;
-      font-weight: 600;
-      color: $primary-color;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid $border-color;
-      padding-bottom: 0.5rem;
+    .post-date {
+      color: $medium-gray;
+      font-size: 0.9rem;
+      min-width: 80px;
+      margin-right: 1rem;
     }
     
-    .month-section {
-      margin-bottom: 2rem;
+    .post-title a {
+      color: $text-color;
+      text-decoration: none;
       
-      .month-title {
-        font-size: 1.4rem;
-        font-weight: 500;
+      &:hover {
         color: $secondary-color;
-        margin-bottom: 1rem;
-      }
-      
-      .post-list-archive {
-        .post-item-archive {
-          display: flex;
-          align-items: baseline;
-          margin-bottom: 0.8rem;
-          
-          .post-date {
-            color: $medium-gray;
-            font-size: 0.9rem;
-            min-width: 80px;
-            margin-right: 1rem;
-          }
-          
-          .post-title {
-            a {
-              color: $text-color;
-              text-decoration: none;
-              
-              &:hover {
-                color: $secondary-color;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -400,28 +394,24 @@ body {
   .tag-item {
     display: inline-block;
     margin: 0.5rem;
+  }
+  
+  .tag-item a {
+    @extend %tag-base;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
     
-    a {
-      display: inline-block;
-      background-color: $light-gray;
-      color: $medium-gray;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      
-      &:hover {
-        background-color: $secondary-color;
-        color: white;
-        transform: translateY(-2px);
-      }
-      
-      .tag-count {
-        font-size: 0.9rem;
-        opacity: 0.8;
-        margin-left: 0.5rem;
-      }
+    &:hover {
+      transform: translateY(-2px);
     }
+  }
+  
+  .tag-count {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-left: 0.5rem;
   }
 }
 
@@ -445,7 +435,7 @@ body {
     }
   }
 
-  .post-list .post-item .post-item-header {
+  .post-list .post-item-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
@@ -477,3 +467,4 @@ body {
     }
   }
 }
+
