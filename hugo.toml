@@ -1,3 +1,37 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = 'https://gooseworks.ca/'
+languageCode = 'en-CA'
+title = 'Gooseworks'
+
+# Content and taxonomies
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+# Menu configuration
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Archives"
+    url = "/archives/"
+    weight = 2
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+
+# Pagination
+paginate = 10
+paginatePath = "page"
+
+# Markup configuration
+[markup]
+  [markup.highlight]
+    style = "github"
+    lineNos = true
