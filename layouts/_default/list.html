@@ -10,22 +10,23 @@
 <div class="post-list">
     {{ range .Pages }}
     <article class="post-item">
-        <div class="post-meta">
-            <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
-                {{ .Date.Format "January 2, 2006" }}
-            </time>
-            {{ if .Params.tags }}
-            <div class="post-tags">
-                {{ range .Params.tags }}
-                <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+        <div class="post-item-header">
+            <div class="post-item-title-tags">
+                <h2 class="post-title">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h2>
+                {{ if .Params.tags }}
+                <div class="post-tags">
+                    {{ range .Params.tags }}
+                    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+                    {{ end }}
+                </div>
                 {{ end }}
             </div>
-            {{ end }}
+            <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "Jan 2, 2006" }}
+            </time>
         </div>
-        
-        <h2 class="post-title">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </h2>
         
         {{ if .Summary }}
         <div class="post-summary">

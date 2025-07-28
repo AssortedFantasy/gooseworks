@@ -115,36 +115,50 @@ body {
   .post-item {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 2px solid $border-color;
     
     &:last-child {
       border-bottom: none;
     }
+
+    .post-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed rgba($text-color, 0.2);
+    }
+
+    .post-item-title-tags {
+      flex: 1;
+    }
     
-    .post-meta {
+    .post-date {
       color: $medium-gray;
       font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      
-      .post-date {
-        margin-right: 1rem;
-      }
-      
-      .post-tags {
-        .tag {
-          display: inline-block;
-          background-color: $light-gray;
-          color: $medium-gray;
-          padding: 0.2rem 0.5rem;
-          border-radius: 12px;
-          font-size: 0.8rem;
-          text-decoration: none;
-          margin-right: 0.5rem;
-          
-          &:hover {
-            background-color: $secondary-color;
-            color: white;
-          }
+      text-align: right;
+      white-space: nowrap;
+      padding-top: 0.25rem; // Align with title
+    }
+
+    .post-tags {
+      margin-top: 0.5rem;
+      .tag {
+        display: inline-block;
+        background-color: $light-gray;
+        color: $medium-gray;
+        padding: 0.1rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        margin-right: 0.5rem;
+        margin-bottom: 0.25rem;
+        
+        &:hover {
+          background-color: $secondary-color;
+          color: white;
         }
       }
     }
@@ -165,7 +179,7 @@ body {
     }
     
     .post-summary {
-      color: $text-color;
+      color: $medium-gray;
       line-height: 1.6;
       margin-bottom: 1rem;
     }
@@ -428,6 +442,25 @@ body {
     
     .nav ul {
       gap: 1rem;
+    }
+  }
+
+  .post-list .post-item .post-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    .post-date {
+      padding-top: 0;
+      order: 1; // date after title
+    }
+
+    .post-item-title-tags {
+      order: 0; // title first
+    }
+
+    .post-tags {
+      order: 2; // tags last
     }
   }
   
