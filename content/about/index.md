@@ -9,8 +9,6 @@ description: "About GooseWorks"
 
 Welcome to GooseWorks, a blog focused on projects, technology, and creative endeavors.
 
-This is where I share my thoughts, projects, and experiences. Stay tuned for more content!
-
 ## What You'll Find Here
 
 - **Project Updates**: Deep dives into current and past projects

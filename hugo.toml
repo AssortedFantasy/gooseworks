@@ -2,6 +2,9 @@ baseURL = 'https://gooseworks.ca/'
 languageCode = 'en-CA'
 title = 'Gooseworks'
 
+# For lastMod
+enableGitInfo = true
+
 # Content and taxonomies
 [taxonomies]
   tag = "tags"
