@@ -4,7 +4,6 @@ date: 2025-07-27T14:30:00-05:00
 draft: false
 description: "A comprehensive guide to setting up a Hugo blog with custom SCSS styling and layouts"
 tags: ["hugo", "web-development", "scss", "static-site-generator", "blog"]
-categories: ["projects", "tutorials"]
 ---
 
 # Building a Hugo Static Site Generator Blog

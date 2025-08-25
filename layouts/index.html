@@ -1,6 +1,8 @@
 {{ define "main" }}
 <div class="post-list">
-    {{ range .Paginator.Pages }}
+    {{ $posts := where .Site.RegularPages "Type" "in" "posts" }}
+    {{ $paginator := .Paginate $posts }}
+    {{ range $paginator.Pages }}
     <article class="post-item">
         <div class="post-item-header">
             <div class="post-item-title-tags">
@@ -31,22 +33,22 @@
     {{ end }}
 </div>
 
-{{ if gt .Paginator.TotalPages 1 }}
+{{ if gt $paginator.TotalPages 1 }}
 <nav class="pagination">
-    {{ if .Paginator.HasPrev }}
-    <a href="{{ .Paginator.Prev.URL }}">&larr; Previous</a>
+    {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}">&larr; Previous</a>
     {{ end }}
     
-    {{ range .Paginator.Pagers }}
-    {{ if eq . $.Paginator }}
+    {{ range $paginator.Pagers }}
+    {{ if eq . $paginator }}
     <span class="current">{{ .PageNumber }}</span>
     {{ else }}
     <a href="{{ .URL }}">{{ .PageNumber }}</a>
     {{ end }}
     {{ end }}
     
-    {{ if .Paginator.HasNext }}
-    <a href="{{ .Paginator.Next.URL }}">Next &rarr;</a>
+    {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}">Next &rarr;</a>
     {{ end }}
 </nav>
 {{ end }}

@@ -4,7 +4,6 @@ date: 2025-07-27T10:00:00-05:00
 draft: false
 description: "The inaugural post introducing GooseWorks blog"
 tags: ["welcome", "blog", "introduction"]
-categories: ["announcements"]
 ---
 
 # Welcome to GooseWorks!

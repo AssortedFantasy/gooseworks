@@ -5,7 +5,6 @@ title = 'Gooseworks'
 # Content and taxonomies
 [taxonomies]
   tag = "tags"
-  category = "categories"
 
 # Menu configuration
 [menu]
