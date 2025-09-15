@@ -19,4 +19,15 @@ sudo snap install hugo
 hugo new site . --force
 ```
 
+## Hugo Testing
+
+```
+hugo server -D
+```
+
+
+## Adding Content
+
+Use the following command to create a new post:
+
 
