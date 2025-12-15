@@ -4,7 +4,6 @@ date: {{ .Date }}
 publishDate: {{ .Date }}
 draft: true
 description: ""
-summary: " "
 tags: []
 ---
 
