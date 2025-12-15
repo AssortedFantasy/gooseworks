@@ -30,4 +30,6 @@ hugo server -D
 
 Use the following command to create a new post:
 
-
+```
+./new_post.sh "Post Title"
+```
