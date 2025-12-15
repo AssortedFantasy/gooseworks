@@ -8,3 +8,18 @@ tags: ["lol", "lol1", "lol2"]
 ---
 
 Enter your post content here.
+
+MATH TEST
+
+$$
+E = mc^2
+$$
+
+Let $f(x) = x^2 + 2x + 1$ be a quadratic function.
+
+This is how you integrate ln(x):
+
+$$
+\int \ln(x) \, dx = x \ln(x) - x + C
+$$
+

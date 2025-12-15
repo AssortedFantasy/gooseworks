@@ -1,0 +1,4 @@
+{{- $opts := dict "output" "mathml" "displayMode" (eq .Type "block") }}
+{{- with transform.ToMath .Inner $opts }}
+  {{- . }}
+{{- end -}}
