@@ -1,5 +1,13 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
+{{ $title := .Title }}
+{{ $pages := .Pages }}
+
+{{ if .IsHome }}
+    {{ $title = "Latest Posts" }}
+    {{ $pages = where .Site.RegularPages "Type" "posts" }}
+{{ end }}
+
+<h1>{{ $title }}</h1>
 
 {{ if .Content }}
 <div class="page-content">
@@ -8,7 +16,7 @@
 {{ end }}
 
 <div class="post-list">
-    {{ range .Pages }}
+    {{ range $pages }}
     <article class="post-item">
         <div class="post-item-header">
             <div class="post-item-title-tags">

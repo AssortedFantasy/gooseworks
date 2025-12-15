@@ -1,460 +1,61 @@
 // Variables
 $primary-color: #2c3e50;
 $secondary-color: #3498db;
-$accent-color: #e74c3c;
 $text-color: #333;
 $light-gray: #f8f9fa;
-$medium-gray: #6c757d;
 $border-color: #dee2e6;
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$container-width: 800px;
 
-$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
-$container-max-width: 1200px;
-$header-height: 80px;
-
-// Reusable placeholder for tags
-%tag-base {
-  display: inline-block;
-  background-color: $light-gray;
-  color: $medium-gray;
-  text-decoration: none;
-  
-  &:hover {
-    background-color: $secondary-color;
-    color: white;
-  }
-}
-
-// Base styles
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+// Reset & Base
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: $font-family-base;
+  font-family: $font-family;
   line-height: 1.6;
   color: $text-color;
-  background-color: #fff;
+  background: #fff;
 }
+a { color: $secondary-color; text-decoration: none; &:hover { text-decoration: underline; } }
 
-// Container
-.container {
-  max-width: $container-max-width;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+// Layout
+.container { max-width: $container-width; margin: 0 auto; padding: 0 20px; }
 
 // Header
 .header {
-  background-color: #fff;
+  padding: 20px 0;
   border-bottom: 1px solid $border-color;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  margin-bottom: 40px;
   
-  .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: $header-height;
-  }
-  
-  .logo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: $primary-color;
-    text-decoration: none;
-    
-    &:hover {
-      color: $secondary-color;
-    }
-  }
-  
-  .search-container {
-    flex: 1;
-    max-width: 400px;
-    margin: 0 2rem;
-    
-    .search-placeholder {
-      width: 100%;
-      padding: 0.5rem 1rem;
-      border: 1px solid $border-color;
-      border-radius: 25px;
-      background-color: $light-gray;
-      color: $medium-gray;
-      text-align: center;
-      cursor: not-allowed;
-    }
-  }
-  
-  .nav {
-    ul {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-      
-      li {
-        a {
-          color: $text-color;
-          text-decoration: none;
-          font-weight: 500;
-          transition: color 0.3s ease;
-          
-          &:hover {
-            color: $secondary-color;
-          }
-          
-          &.active {
-            color: $secondary-color;
-            font-weight: 600;
-          }
-        }
-      }
-    }
-  }
+  .header-content { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 1.5rem; font-weight: bold; color: $primary-color; text-decoration: none; }
+  .nav ul { display: flex; list-style: none; gap: 20px; }
+  .nav a { color: $text-color; font-weight: 500; &.active { color: $secondary-color; } }
 }
 
-// Main content
-.main {
-  padding: 2rem 0;
-  min-height: calc(100vh - #{$header-height} - 200px);
-}
-
-// Blog posts
+// Posts
 .post-list {
-  .post-item {
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid $border-color;
-    
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  .post-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding-bottom: 0.25rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .post-item-title-tags {
-    flex: 1;
-  }
-  
-  .post-date {
-    color: $medium-gray;
-    font-size: 0.85rem;
-    text-align: right;
-    white-space: nowrap;
-    padding-top: 0.1rem; // Align with title
-  }
-
-  .post-tags {
-    margin-top: 0.25rem;
-    .tag {
-      @extend %tag-base;
-      padding: 0.08rem 0.45rem;
-      border-radius: 10px;
-      font-size: 0.78rem;
-      margin-right: 0.35rem;
-      margin-bottom: 0.2rem;
-    }
-  }
-  
-  .post-title {
-    margin-bottom: 0.25rem;
-    
-    a {
-      color: $primary-color;
-      text-decoration: none;
-      font-size: 1.35rem;
-      font-weight: 600;
-      
-      &:hover {
-        color: $secondary-color;
-      }
-    }
-  }
-  
-  .post-summary {
-    color: $medium-gray;
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
-    border-top: none;
-    font-size: 0.93rem;
-  }
+  .post-item { margin-bottom: 40px; }
+  .post-title { margin-bottom: 10px; a { color: $primary-color; text-decoration: none; &:hover { color: $secondary-color; } } }
+  .post-date { font-size: 0.9rem; color: #666; display: block; margin-bottom: 10px; }
+  .post-tags { margin-top: 5px; .tag { font-size: 0.8rem; color: #888; margin-right: 10px; } }
 }
 
-// Single post
+// Single Post
 .post-single {
-  .post-header {
-    margin-bottom: 2rem;
-    
-    .post-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: $primary-color;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-    
-    .post-meta {
-      color: $medium-gray;
-      font-size: 1rem;
-      
-      .post-date {
-        margin-right: 1rem;
-      }
-    }
-  }
-  
+  .post-header { margin-bottom: 30px; border-bottom: 1px solid $light-gray; padding-bottom: 20px; }
+  .post-title { font-size: 2.5rem; margin-bottom: 10px; }
   .post-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    
-    h1, h2, h3, h4, h5, h6 {
-      margin: 2rem 0 1rem 0;
-      color: $primary-color;
-    }
-    
-    h2 {
-      font-size: 1.8rem;
-      border-bottom: 2px solid $border-color;
-      padding-bottom: 0.5rem;
-    }
-    
-    h3 {
-      font-size: 1.4rem;
-    }
-    
-    p {
-      margin-bottom: 1.5rem;
-    }
-    
-    code {
-      background-color: $light-gray;
-      padding: 0.2rem 0.4rem;
-      border-radius: 3px;
-      font-family: $font-family-mono;
-      font-size: 0.9rem;
-    }
-    
-    pre {
-      background-color: $light-gray;
-      padding: 1rem;
-      border-radius: 5px;
-      overflow-x: auto;
-      margin: 1.5rem 0;
-      
-      code {
-        background: none;
-        padding: 0;
-      }
-    }
-    
-    blockquote {
-      border-left: 4px solid $secondary-color;
-      padding-left: 1rem;
-      margin: 1.5rem 0;
-      color: $medium-gray;
-      font-style: italic;
-    }
-    
-    ul, ol {
-      margin: 1rem 0 1rem 2rem;
-    }
-    
-    li {
-      margin-bottom: 0.5rem;
-    }
-  }
-  
-  .post-tags {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid $border-color;
-
-    .tag {
-      @extend %tag-base;
-      padding: 0.4rem 0.8rem;
-      border-radius: 15px;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-  }
-}
-
-// Pagination
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem 0;
-  gap: 1rem;
-  
-  a, span {
-    padding: 0.5rem 1rem;
-    border: 1px solid $border-color;
-    border-radius: 5px;
-    text-decoration: none;
-    color: $text-color;
-    
-    &:hover {
-      background-color: $secondary-color;
-      color: white;
-      border-color: $secondary-color;
-    }
-    
-    &.current {
-      background-color: $secondary-color;
-      color: white;
-      border-color: $secondary-color;
-    }
+    h2 { margin: 30px 0 15px; }
+    p { margin-bottom: 20px; }
+    code { background: $light-gray; padding: 2px 5px; border-radius: 3px; }
+    pre { background: #f4f4f4; padding: 15px; overflow-x: auto; margin-bottom: 20px; }
+    img { max-width: 100%; height: auto; margin: 20px 0; }
   }
 }
 
 // Footer
-.footer {
-  background-color: $light-gray;
-  border-top: 1px solid $border-color;
-  padding: 2rem 0;
-  margin-top: 4rem;
-  text-align: center;
-  color: $medium-gray;
-}
+.footer { margin-top: 60px; padding: 40px 0; border-top: 1px solid $border-color; text-align: center; color: #888; font-size: 0.9rem; }
 
-// Archives page
-.archives {
-  .year-section {
-    margin-bottom: 3rem;
-  }
-  
-  .year-title {
-    font-size: 2rem;
-    font-weight: 600;
-    color: $primary-color;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid $border-color;
-    padding-bottom: 0.5rem;
-  }
-  
-  .month-section {
-    margin-bottom: 2rem;
-  }
-  
-  .month-title {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: $secondary-color;
-    margin-bottom: 1rem;
-  }
-  
-  .post-item-archive {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 0.8rem;
-    
-    .post-date {
-      color: $medium-gray;
-      font-size: 0.9rem;
-      min-width: 80px;
-      margin-right: 1rem;
-    }
-    
-    .post-title a {
-      color: $text-color;
-      text-decoration: none;
-      
-      &:hover {
-        color: $secondary-color;
-      }
-    }
-  }
-}
-
-// Tags page
-.tags-cloud {
-  .tag-item {
-    display: inline-block;
-    margin: 0.5rem;
-  }
-  
-  .tag-item a {
-    @extend %tag-base;
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      transform: translateY(-2px);
-    }
-  }
-  
-  .tag-count {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-left: 0.5rem;
-  }
-}
-
-// Responsive design
-@media (max-width: 768px) {
-  .header {
-    .header-content {
-      flex-direction: column;
-      height: auto;
-      padding: 1rem 0;
-      gap: 1rem;
-    }
-    
-    .search-container {
-      margin: 0;
-      max-width: 100%;
-    }
-    
-    .nav ul {
-      gap: 1rem;
-    }
-  }
-
-  .post-list .post-item-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-
-    .post-date {
-      padding-top: 0;
-      order: 1; // date after title
-    }
-
-    .post-item-title-tags {
-      order: 0; // title first
-    }
-
-    .post-tags {
-      order: 2; // tags last
-    }
-  }
-  
-  .post-single .post-header .post-title {
-    font-size: 2rem;
-  }
-  
-  .archives .post-item-archive {
-    flex-direction: column;
-    align-items: flex-start;
-    
-    .post-date {
-      margin-bottom: 0.3rem;
-    }
-  }
-}
+// Utilities
+.search-container { display: none; } // Hide search for now
 
