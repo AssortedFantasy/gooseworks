@@ -6,6 +6,11 @@
             <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
                 {{ .Date.Format "January 2, 2006" }}
             </time>
+            {{ if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
+            <span class="post-lastmod">
+                (Updated: {{ .Lastmod.Format "January 2, 2006" }})
+            </span>
+            {{ end }}
             {{ if .Params.categories }}
             <span class="post-categories">
                 in
@@ -16,19 +21,19 @@
             </span>
             {{ end }}
         </div>
+        {{ if .Params.tags }}
+        <div class="post-tags">
+            <strong>Tags:</strong>
+            {{ range .Params.tags }}
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
     </header>
     
     <div class="post-content">
         {{ .Content }}
     </div>
-    
-    {{ if .Params.tags }}
-    <div class="post-tags">
-        <strong>Tags:</strong>
-        {{ range .Params.tags }}
-        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="tag">#{{ . }}</a>
-        {{ end }}
-    </div>
-    {{ end }}
+
 </article>
 {{ end }}
