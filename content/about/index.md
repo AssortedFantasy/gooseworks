@@ -5,9 +5,9 @@ draft: false
 description: "About GooseWorks"
 ---
 
-# About GooseWorks
+## About GooseWorks
 
-Welcome to GooseWorks, a blog focused on projects, technology, and creative endeavors.
+Welcome to GooseWorks, a web blog focused on projects, technology, and creative endeavors.
 
 ## What You'll Find Here
 
@@ -16,3 +16,7 @@ Welcome to GooseWorks, a blog focused on projects, technology, and creative ende
 - **Personal Reflections**: Thoughts on technology, creativity, and life
 
 Feel free to explore the archives and browse by tags to find content that interests you.
+
+## About Me
+
+I'm Jehanzeb Mirza 😀 I'm a Canadian 🍁 who likes technical things.

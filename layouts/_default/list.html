@@ -5,6 +5,8 @@
 {{ if .IsHome }}
     {{ $title = "Latest Posts" }}
     {{ $pages = where .Site.RegularPages "Type" "posts" }}
+{{ else if eq .Kind "term" }}
+    {{ $title = printf "Posts tagged with \"%s\"" .Title }}
 {{ end }}
 
 <h1>{{ $title }}</h1>
